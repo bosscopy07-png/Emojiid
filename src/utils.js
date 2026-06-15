@@ -39,7 +39,8 @@ export function extractCustomEmojis(message) {
 }
 
 /**
- * Formats extracted emojis into a numbered list
+ * Formats extracted emojis into a numbered list with copy-friendly IDs
+ * Each ID is wrapped in backticks for easy tap-to-copy on mobile
  * Splits into chunks if message would exceed Telegram's limit
  * 
  * @param {Array<{emoji: string, customEmojiId: string}>} emojis
@@ -52,19 +53,19 @@ export function formatEmojiList(emojis) {
   
   const chunks = [];
   let currentChunk = '';
-  let chunkEmojiCount = 0;
   
   for (let i = 0; i < emojis.length; i++) {
-    const line = `${i + 1}. ${emojis[i].emoji} = ${emojis[i].customEmojiId}\n`;
+    // Wrap ID in backticks for easy copy (tap/long-press on mobile)
+    // Also add a zero-width space after the emoji to prevent it from being
+    // combined with the number on some devices
+    const line = `${i + 1}. ${emojis[i].emoji} \u200B= \`${emojis[i].customEmojiId}\`\n`;
     
     // Check if adding this line would exceed Telegram's message limit
     if ((currentChunk.length + line.length) > botConfig.maxMessageLength) {
       chunks.push(currentChunk.trim());
       currentChunk = line;
-      chunkEmojiCount = 1;
     } else {
       currentChunk += line;
-      chunkEmojiCount++;
     }
   }
   
