@@ -45,13 +45,16 @@ Send me any message containing *Telegram Premium emojis* (custom emojis), and I'
 ✅ Preserves original order
 ✅ Works with text messages and captions
 ✅ Handles media with emoji captions
+✅ *Tap any ID to copy it instantly*
 
 *Example:*
 Send: 🎉 💯 🫠
 Receive:
-1. 🎉 = 688987777798
-2. 💯 = 6889990087544
-3. 🫠 = 3365226743455
+1. 🎉 = \`688987777798\`
+2. 💯 = \`6889990087544\`
+3. 🫠 = \`3365226743455\`
+
+💡 *Tip: Tap any ID to copy it!*
 `;
 
   try {
@@ -82,6 +85,10 @@ Telegram Premium users can send custom animated emojis. Each has a unique \`cust
 • Extracts the \`custom_emoji_id\` for each emoji
 • Returns them as a numbered list
 
+*How to copy an ID:*
+• *Mobile:* Long-press or tap the ID (wrapped in \`code\`) to copy
+• *Desktop:* Click the ID to select it, then Ctrl+C
+
 *Supported message types:*
 • Text messages with inline emojis
 • Photo/video captions with emojis
@@ -96,6 +103,7 @@ Telegram Premium users can send custom animated emojis. Each has a unique \`cust
 • You can send multiple emojis in one message
 • The bot preserves the exact order they appear
 • Both text and media captions are supported
+• *Tap any ID to copy it instantly!*
 `;
 
   try {
